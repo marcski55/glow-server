@@ -1,0 +1,32 @@
+{
+  "name": "glow-server",
+  "version": "1.0.0",
+  "description": "Server part of the glow app for home management",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc -p ./ && cp -R keys dist/keys",
+    "dist": "node dist/index.js",
+    "start": "nodemon src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcski55/glow-server.git"
+  },
+  "author": "Marc Skwarczynski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcski55/glow-server/issues"
+  },
+  "homepage": "https://github.com/marcski55/glow-server#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "http-status-codes": "^2.2.0",
+    "rethinkdb": "^2.4.2"
+  }
+}
