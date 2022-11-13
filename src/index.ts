@@ -1,4 +1,4 @@
-import * as dotenv from 'dotenv'; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+import * as dotenv from 'dotenv';
 dotenv.config();
 
 import cors from 'cors';
@@ -11,7 +11,7 @@ import {
   deleteFromShoppingList,
   clearShoppingList
 } from './controllers/shoppingControllers';
-import { getRecipeList, getRecipe, putRecipe, deleteRecipe } from './controllers/recipeControllers';
+import { getRecipeList, putRecipe, deleteRecipe } from './controllers/recipeControllers';
 
 const PORT = process.env.GLOW_API_PORT;
 export const APP = express();
@@ -23,8 +23,7 @@ APP.use(express.urlencoded({ extended: true }));
 APP.use(cors());
 
 /** Set up Recipe Endpoints */
-APP.get('/recipe/list', getRecipeList);
-APP.get('/recipe/:recipe', getRecipe);
+APP.get('/recipes', getRecipeList);
 APP.put('/recipe', putRecipe);
 APP.delete('/recipe/:recipe', deleteRecipe);
 
@@ -32,7 +31,7 @@ APP.delete('/recipe/:recipe', deleteRecipe);
 APP.get('/shopping_list', getShoppingList);
 APP.put('/shopping_list', putOnShoppingList);
 APP.delete('/shopping_list/:item', deleteFromShoppingList);
-APP.delete('/shopping_list/', clearShoppingList);
+APP.delete('/shopping_list', clearShoppingList);
 
 const httpsOptions = {
   key: fs.readFileSync(process.env.KEY_FILE),
